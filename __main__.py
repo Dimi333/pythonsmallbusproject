@@ -1,3 +1,4 @@
+""" Hlavný súbor """
 from Mobile import Mobile
 from Damage import Damage
 from Battle import Battle
