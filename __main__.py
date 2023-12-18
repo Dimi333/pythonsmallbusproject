@@ -7,6 +7,9 @@ from Building import Building
 from uuid import uuid4
 import os
 
+if (os.name == "posix"):
+    import console
+
 gameRunning = True
 
 player = Mobile(name="Player1", hp=100, AR=10, DR=8)
@@ -17,16 +20,22 @@ battle = Battle(damage, player, mob)
 
 while gameRunning:
     if os.name == 'posix':
-        os.system('clear')
+        console.clear()
     else:
         os.system('cls')
 
     city.printCity()
     # battle.deal()
-    menu = input()
+    
+    print("1 - koniec, 2 - sklad, 3 - dom")
 
+    menu = input()
     if menu == "2":
-        building = Building(uuid4(), "Sklad", 10)
+        building = Building(uuid4(), "Sklad", 10, 8)
+        city.registerBuilding(building)
+        
+    if menu == "3":
+        building = Building(uuid4(), "Dom", 5, 4)
         city.registerBuilding(building)
 
     if menu == "1":

@@ -54,6 +54,7 @@ class City:
 
     def registerBuilding(self, building: Building):
         self.buildings[building.id] = building
+        self.gold -= building.price
         self.subs[building.id] = self.mainTimer.subscribe(lambda value: building.build(1))
 
     def checkAll(self):
