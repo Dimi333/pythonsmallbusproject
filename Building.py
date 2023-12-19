@@ -20,7 +20,10 @@ class Building:
     def build(self, amount: int):
         self.health += int(amount)
         self.buildTime -= int(amount)
-        self.name = self.wholeName + " " + str(self.buildTime)
+        if self.buildTime > 0:
+           self.name = self.wholeName + " " + str(self.buildTime)
+        else:
+            self.name = self.wholeName
 
     def Print(self):
         print(self.name)
